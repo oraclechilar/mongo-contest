@@ -3,11 +3,7 @@ package uz.jl.mappers.answer;
 import uz.jl.dto.answer.AnswerCreateDto;
 import uz.jl.dto.answer.AnswerDto;
 import uz.jl.dto.answer.AnswerUpdateDto;
-import uz.jl.dto.subject.SubjectCreateDto;
-import uz.jl.dto.subject.SubjectDto;
-import uz.jl.dto.subject.SubjectUpdateDto;
 import uz.jl.entity.answer.Answer;
-import uz.jl.entity.subject.Subject;
 import uz.jl.mappers.GenericMapper;
 
 /**
@@ -16,21 +12,31 @@ import uz.jl.mappers.GenericMapper;
 public class AnswerMapper implements GenericMapper<Answer, AnswerDto, AnswerCreateDto, AnswerUpdateDto> {
     @Override
     public Answer fromDto(AnswerDto dto) {
-        return null;
+        return Answer.builder()
+                .text(dto.getText())
+                .isCorrect(dto.isCorrect()).build();
     }
 
     @Override
     public Answer fromCreateDto(AnswerCreateDto dto) {
-        return null;
+        return Answer.builder()
+                .text(dto.getText())
+                .isCorrect(dto.isCorrect()).build();
     }
 
     @Override
     public Answer fromUpdateDto(AnswerUpdateDto dto) {
-        return null;
+        return Answer.builder()
+                .text(dto.getText())
+                .isCorrect(dto.isCorrect())
+                .selected(dto.isSelected())
+                .build();
     }
 
     @Override
     public AnswerDto toDto(Answer entity) {
-        return null;
+        return AnswerDto.builder().
+                text(entity.getText())
+                .isCorrect(entity.isCorrect()).build();
     }
 }

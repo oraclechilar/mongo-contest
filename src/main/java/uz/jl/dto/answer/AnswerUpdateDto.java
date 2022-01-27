@@ -13,6 +13,6 @@ import uz.jl.dto.GenericDto;
 @Builder
 public class AnswerUpdateDto extends GenericDto {
     private String text;
-    private boolean is_correct;
-    private boolean is_selected;
+    private boolean isCorrect;
+    private boolean selected;
 }

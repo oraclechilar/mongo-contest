@@ -9,11 +9,11 @@ import java.util.List;
 
 @Getter
 @Setter
-@NoArgsConstructor
-@AllArgsConstructor
+@Builder
 public class User extends Auditable {
     private String username;
     private String password;
     private String email;
     private List<Quiz> quizzes;
+
 }

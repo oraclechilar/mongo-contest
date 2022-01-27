@@ -8,11 +8,10 @@ import uz.jl.dto.GenericDto;
  */
 @Setter
 @Getter
-@NoArgsConstructor
-@AllArgsConstructor
 @Builder
 public class AnswerDto extends GenericDto {
     private String text;
-    private boolean is_correct;
-    private boolean is_selected;
+    private boolean isCorrect;
+    private boolean selected;
+
 }

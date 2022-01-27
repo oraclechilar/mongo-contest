@@ -12,8 +12,6 @@ import java.util.Date;
 @Getter
 @Setter
 @ToString
-@Builder
-@NoArgsConstructor
 @AllArgsConstructor
 public abstract class Auditable {
     @BsonProperty(value = "_id")

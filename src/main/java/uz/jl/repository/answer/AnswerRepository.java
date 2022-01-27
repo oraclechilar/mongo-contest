@@ -1,12 +1,17 @@
 package uz.jl.repository.answer;
 
+import com.mongodb.client.FindIterable;
+import com.mongodb.client.model.Filters;
 import org.bson.types.ObjectId;
 import uz.jl.criteria.answer.AnswerCriteria;
+import uz.jl.criteria.test.TestCriteria;
 import uz.jl.dao.GenericDao;
 import uz.jl.entity.answer.Answer;
+import uz.jl.entity.test.Test;
 import uz.jl.repository.GenericCrudRepository;
 import uz.jl.repository.GenericRepository;
 
+import java.util.ArrayList;
 import java.util.List;
 import java.util.Optional;
 
@@ -22,27 +27,32 @@ public class AnswerRepository extends GenericDao<AnswerCriteria, Answer>
     }
 
     @Override
-    public ObjectId create(Answer entity) {
-        return null;
+    public ObjectId create(Answer answer) {
+        collection.insertOne(answer);
+        return answer.getId();
     }
 
     @Override
     public void delete(ObjectId key) {
-
+        // TODO: 1/26/2022 Javohir aka ko'rib beradilar
     }
 
     @Override
-    public void update(Answer entity) {
-
+    public void update(Answer answer) {
+        // TODO: 1/26/2022 Javohir aka ko'rib beradilar
     }
 
     @Override
     public List<Answer> list(AnswerCriteria criteria) {
-        return null;
+        List<Answer> answers = new ArrayList<>();
+        FindIterable<Answer> list = collection.find(Filters.ne("deleted", true));
+        answers.iterator().forEachRemaining(answers::add);
+        return answers;
     }
 
     @Override
     public Optional<Answer> get(ObjectId key) {
-        return Optional.empty();
+        Answer test = collection.find(Filters.eq("_id", key)).first();
+        return Optional.of(test);
     }
 }

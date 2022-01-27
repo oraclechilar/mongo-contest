@@ -13,5 +13,5 @@ import uz.jl.dto.GenericBaseDto;
 @Builder
 public class AnswerCreateDto implements GenericBaseDto {
     private String text;
-    private boolean is_correct;
+    private boolean isCorrect;
 }
